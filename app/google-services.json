@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "712560590463",
+    "project_id": "tiffintrain-6a5ba",
+    "storage_bucket": "tiffintrain-6a5ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712560590463:android:1736ccf8b5519d38e9494a",
+        "android_client_info": {
+          "package_name": "com.example.tiffintrain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712560590463-1deif0vpk2a5u1vkiaj28uso7i6gqf3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGI8I-ODylD3UHjhhI8xeQsQv7hWM6YD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712560590463-1deif0vpk2a5u1vkiaj28uso7i6gqf3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

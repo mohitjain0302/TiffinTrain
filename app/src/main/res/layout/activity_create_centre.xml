@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateCentreActivity"
+    android:padding="8dp"
+    android:background="@color/background_pitch">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="40dp"
+        android:text="Tiffin Centre Details"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Centre Name"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/centre_name_field"
+        android:inputType="textCapWords"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Email"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/email_field"
+        android:inputType="textCapWords"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/address_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Address"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/download"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:id="@+id/get_location_button"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Pin Code"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/pincode_field"
+        android:inputType="number"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contact No."
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/contact_field"
+        android:inputType="number"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Tiffin Centre"
+        android:textSize="22sp"
+        android:layout_margin="16dp"
+        android:onClick="addTiffinCentre"
+        android:background="@drawable/rounded_button"/>
+
+
+
+
+</LinearLayout>

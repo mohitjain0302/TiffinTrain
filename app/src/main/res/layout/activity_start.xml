@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartActivity"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:src="@drawable/logo1"
+        android:layout_gravity="center"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="33dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Email"
+        android:textSize="28sp"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawablePadding="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:layout_marginBottom="22dp"
+        android:id="@+id/login_email_field"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Password"
+        android:background="@drawable/rounded_edittext"
+        android:textSize="28sp"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="8dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/login_password_field"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/manaul_sign_in_button"
+        android:text="Sign In"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_button"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Or continue with"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"/>
+
+    <com.google.android.gms.common.SignInButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sign_in_button"
+        android:layout_margin="8dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_button">
+
+    </com.google.android.gms.common.SignInButton>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="4dp"
+        android:text="Don't have an Account . Create now"
+        android:textColor="@color/black"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textSize="18sp"
+        android:text="Create an Account"
+        android:onClick="signUp"
+        android:background="@drawable/rounded_button"/>
+
+</LinearLayout>

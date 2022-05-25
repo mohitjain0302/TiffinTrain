@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CentreManagementActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tiffin_centre_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Abcde Tiffin Services" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/tiffin" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Contact No"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/contact_no_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:drawableEnd="@drawable/ic_baseline_phone_24"
+            android:layout_marginRight="10dp"
+            android:textSize="26sp"
+            tools:text="123456789" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Address"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/address_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:textSize="22sp"
+                tools:text="centreAddress"/>
+
+
+            <ImageView
+                android:src="@drawable/icon_google_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="showMap"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="12dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

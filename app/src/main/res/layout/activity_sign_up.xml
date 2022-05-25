@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".SignUpActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textSize="48sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Name"
+        android:textSize="20sp"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/name_field"
+        android:inputType="textCapWords"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Age"
+        android:textSize="20sp"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/age_field"
+        android:inputType="number"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Email"
+        android:textSize="20sp"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/new_email_field"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Create Password"
+        android:textSize="20sp"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/new_password_field"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "Confirm Password"
+        android:textSize="20sp"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/confirm_password_field"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register as customer"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/register_customer_button"
+        android:background="@drawable/rounded_button"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="register as Tiffin centre Owner "
+        android:textSize="18sp"
+        android:layout_margin="16dp"
+        android:id="@+id/register_owner_button"
+        android:background="@drawable/rounded_button"/>
+
+</LinearLayout>
