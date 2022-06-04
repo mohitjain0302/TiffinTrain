@@ -11,7 +11,7 @@
     >
 
     <ImageView
-        android:id = "@+id/image"
+        android:id = "@+id/tiffin_centre_image_in_list"
         android:layout_width="@dimen/list_item_height"
         android:layout_height="@dimen/list_item_height"
         android:src = "@drawable/tiffin"

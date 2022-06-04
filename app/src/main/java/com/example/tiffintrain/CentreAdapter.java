@@ -1,18 +1,24 @@
 package com.example.tiffintrain;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class CentreAdapter extends ArrayAdapter<TiffinCentre> {
 
+    private Context mContext ;
     public CentreAdapter(Activity context, ArrayList<TiffinCentre> centres) {
         super(context, 0, centres);
+        mContext = context ;
     }
 
     @Override
@@ -29,6 +35,12 @@ public class CentreAdapter extends ArrayAdapter<TiffinCentre> {
 
         TextView address = (TextView) listItemView.findViewById(R.id.address_text_view);
         address.setText(currentCentre.getAddress());
+
+        ImageView tiffinCentreImageInList = listItemView.findViewById(R.id.tiffin_centre_image_in_list);
+        if(currentCentre.getMyTiffinCentreImageUrl()!=null){
+            Picasso.with(mContext).load(currentCentre.getMyTiffinCentreImageUrl()).fit().centerCrop().into(tiffinCentreImageInList);
+        }
+
 
         return listItemView;
     }

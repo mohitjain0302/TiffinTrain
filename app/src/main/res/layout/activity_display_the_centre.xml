@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginBottom="24dp"
+            android:id="@+id/tiffin_centre_image"
             android:src="@drawable/tiffin" />
 
         <TextView
@@ -63,7 +64,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
         <TextView
             android:id="@+id/address_id"
             android:layout_width="match_parent"
@@ -82,6 +84,16 @@
             android:layout_marginRight="12dp" />
 
         </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/centre_menus_list_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+            </LinearLayout>
+
 
     </LinearLayout>
 

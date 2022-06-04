@@ -52,15 +52,27 @@ public class StartActivity extends AppCompatActivity {
     EditText loginEmailField ;
     EditText loginPasswordField ;
     Button manualSignInButton ;
-
+    private User currentUser ;
 
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+            String currentUserEmail = user.getEmail();
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(currentUserEmail);
+            documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    currentUser = documentSnapshot.toObject(User.class) ;
+                    if(currentUser.getIsOwner()==2){
+                        startActivity(new Intent(StartActivity.this , CentreManagementActivity.class));
+                    }
+                    else{
+                        startActivity(new Intent(StartActivity.this , DisplayCentresActivity.class));
+                    }
+                }
+            });
         }
     }
 
@@ -194,12 +206,13 @@ public class StartActivity extends AppCompatActivity {
                             DocumentSnapshot documentSnapshot = task.getResult();
                             User user1 = documentSnapshot.toObject(User.class) ;
                             if(user1.getIsOwner()==1){
-                                startActivity(new Intent(StartActivity.this , DisplayCentresActivity.class));
                                 finish();
+                                startActivity(new Intent(StartActivity.this , DisplayCentresActivity.class));
+
                             }
                             else if(user1.getIsOwner()==2){
                                 startActivity(new Intent(StartActivity.this , CentreManagementActivity.class));
-                                finish();
+//                                finish();
                             }
                         }
                     }

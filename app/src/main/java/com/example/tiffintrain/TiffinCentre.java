@@ -1,6 +1,7 @@
 package com.example.tiffintrain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class TiffinCentre implements Serializable {
     private String name ;
@@ -10,6 +11,8 @@ public class TiffinCentre implements Serializable {
     private int contactNo ;
     private double centre_latitude;
     private double centre_longitude;
+    private String myTiffinCentreImageUrl ;
+    private ArrayList<String> menuUIds ;
 
     public TiffinCentre(){
 
@@ -51,5 +54,13 @@ public class TiffinCentre implements Serializable {
 
     public double getCentre_longitude() {
         return centre_longitude;
+    }
+
+    public String getMyTiffinCentreImageUrl() {
+        return myTiffinCentreImageUrl;
+    }
+
+    public ArrayList<String> getMenuUIds() {
+        return menuUIds ;
     }
 }
