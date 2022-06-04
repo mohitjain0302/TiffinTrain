@@ -65,11 +65,12 @@ public class StartActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     currentUser = documentSnapshot.toObject(User.class) ;
-                    if(currentUser.getIsOwner()==2){
-                        startActivity(new Intent(StartActivity.this , CentreManagementActivity.class));
-                    }
-                    else{
-                        startActivity(new Intent(StartActivity.this , DisplayCentresActivity.class));
+                    if(currentUser!=null) {
+                        if (currentUser.getIsOwner() == 2) {
+                            startActivity(new Intent(StartActivity.this, CentreManagementActivity.class));
+                        } else {
+                            startActivity(new Intent(StartActivity.this, DisplayCentresActivity.class));
+                        }
                     }
                 }
             });

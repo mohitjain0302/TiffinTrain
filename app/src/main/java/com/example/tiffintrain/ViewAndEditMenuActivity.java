@@ -1,61 +1,59 @@
 package com.example.tiffintrain;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.squareup.picasso.Picasso;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class DisplayTheCentreActivity extends AppCompatActivity {
+public class ViewAndEditMenuActivity extends AppCompatActivity {
 
-    TiffinCentre currentCentre;
-    private LinearLayout centreMenusListLayout;
-    private String tiffinCentreUId;
-    private ArrayList<String> menuUIds;
-    private TiffinCentre currentTiffinCentre;
+    private LinearLayout centreManagementHomeButton ;
+    private LinearLayout centreManagementMenuButton ;
+    private LinearLayout menuListLayout ;
+    private String currentUserEmail ;
+    private ArrayList<String> menuUIds ;
+    private TiffinCentre currentTiffinCentre ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_the_centre);
+        setContentView(R.layout.activity_view_and_edit_menu);
 
-        currentCentre = (TiffinCentre) getIntent().getSerializableExtra("centre");
-        TextView contact = findViewById(R.id.contact_no_id);
-        TextView address = findViewById(R.id.address_id);
-        TextView centre = findViewById(R.id.tiffin_centre_name);
-        ImageView tiffin_centre_image = findViewById(R.id.tiffin_centre_image);
+        Intent intent = getIntent();
+        currentUserEmail = intent.getStringExtra("key_current_user_email");
 
-        centreMenusListLayout = findViewById(R.id.centre_menus_list_layout);
+        menuListLayout = findViewById(R.id.menu_list_layout) ;
 
-        contact.setText("" + currentCentre.getContactNo());
-        address.setText(currentCentre.getAddress());
-        centre.setText(currentCentre.getName());
-        tiffinCentreUId = currentCentre.getEmail();
-
-        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Tiffin Centres").document(tiffinCentreUId);
+        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Tiffin Centres").document(currentUserEmail);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 currentTiffinCentre = documentSnapshot.toObject(TiffinCentre.class);
-
                 if(currentTiffinCentre.getMenuUIds() != null) {
                     if (currentTiffinCentre.getMenuUIds().isEmpty()) {
                         Log.d("Uid", "Going In If");
@@ -78,7 +76,8 @@ public class DisplayTheCentreActivity extends AppCompatActivity {
                                     LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                                     View listItemView = vi.inflate(R.layout.menu_list_item, null);
 
-                                    if (currentMenu != null) {
+
+                                    if(currentMenu!=null) {
                                         TextView menuName = (TextView) listItemView.findViewById(R.id.menu_name_text_view);
                                         menuName.setText(currentMenu.getMenuName());
 
@@ -89,20 +88,16 @@ public class DisplayTheCentreActivity extends AppCompatActivity {
                                         String str = "";
                                         for (int i = 0; i < menuItems.size(); i++) {
                                             str += menuItems.get(i);
-                                            str += " ,";
+                                            str += ",";
                                         }
 
                                         TextView displayItemsTextView = listItemView.findViewById(R.id.display_items_text_view);
                                         displayItemsTextView.setText(str.substring(0, str.length() - 1));
 
-                                        centreMenusListLayout.addView(listItemView);
+                                        menuListLayout.addView(listItemView);
                                     }
                                 }
                             });
-
-                            if (currentCentre.getMyTiffinCentreImageUrl() != null) {
-                                Picasso.with(DisplayTheCentreActivity.this).load(currentCentre.getMyTiffinCentreImageUrl()).fit().centerCrop().into(tiffin_centre_image);
-                            }
                         }
                     }
                 }
@@ -110,24 +105,37 @@ public class DisplayTheCentreActivity extends AppCompatActivity {
         });
 
 
-        contact.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        centreManagementMenuButton =  findViewById(R.id.centre_management_menu_button);
+        centreManagementMenuButton.setBackgroundColor(Color.parseColor("#F57C00"));
+
+        centreManagementHomeButton = findViewById(R.id.centre_management_home_button);
+        centreManagementHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + currentCentre.getContactNo()));
-                startActivity(intent);
+                startActivity(new Intent(ViewAndEditMenuActivity.this , CentreManagementActivity.class));
             }
         });
-
     }
 
 
-    public void showMap(View view) {
-        double latitude = currentCentre.getCentre_latitude();
-        double longitude = currentCentre.getCentre_longitude();
-        String strUri = "http://maps.google.com/maps?q=loc:" + latitude + "," + longitude + " (" + "Label which you want" + ")";
-        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(strUri));
-        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-        startActivity(intent);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.create_menu_option , menu );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int item_id = item.getItemId() ;
+
+        if(item_id == R.id.create_menu_button){
+            Intent intent = new Intent(ViewAndEditMenuActivity.this , CreateMenuActivity.class);
+            intent.putExtra("key_current_user_email" , currentUserEmail) ;
+            startActivity(intent);
+        }
+        return true;
     }
 }
